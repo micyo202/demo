@@ -1,16 +1,39 @@
-# Compiled class file
+!**/src/main/**
+!**/src/test/**
+
+### Gradle ###
+.gradle
+!gradle/wrapper/gradle-wrapper.jar
+
+### Compiled ###
 *.class
+build/
+target/
+out/
+bin/
 
-# Log file
-*.log
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
 
-# BlueJ files
+### Eclipse ###
+.classpath
+.project
+.settings
+.metadata
+
+### STS ###
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
+
+### BlueJ files ###
 *.ctxt
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+### Package Files ###
 *.jar
 *.war
 *.nar
@@ -19,5 +42,14 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+### Log ###
+*.log
+
+### Mac OS ###
+.DS_Store
+
+### Mobile Tools for Java (J2ME) ###
+.mtj.tmp/
+
+### Virtual Machine Crash Logs, See http://www.java.com/en/download/help/error_hotspot.xml ###
 hs_err_pid*
