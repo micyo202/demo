@@ -1,0 +1,25 @@
+server:
+  port: 8888
+  # 开启优雅下线
+  shutdown: graceful
+
+spring:
+  application:
+    name: demo-xxl-job
+  # 设置优雅下线超时时间
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+xxl:
+  job:
+    enable: on
+    accessToken:
+    executor:
+      appname: demo-xxl-job-executor
+      address:
+      ip:
+      port: 9999
+      logpath: ./logs/xxl-job
+      logretentiondays: 30
+    admin:
+      addresses: http://localhost:8080/xxl-job-admin
