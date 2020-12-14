@@ -1,0 +1,62 @@
+http://ip:port/graphiql
+
+[source, graphql]
+----
+{
+getAllOrders {
+id
+name
+valid
+createTime
+updateTime
+}
+}
+
+
+query ($id: Long!) {
+getOrderById(id: $id) {
+id
+name
+valid
+createTime
+updateTime
+}
+}
+
+
+{
+"id": 1001
+}
+
+
+mutation ($input: TempOrderInput) {
+saveOrderWithInput(input: $input) {
+id
+name
+valid
+}
+}
+
+{
+"input": {
+"id": 9999,
+"name": "名称-9999",
+"valid": true
+}
+}
+
+
+mutation ($id: Long, $name: String, $valid: Boolean) {
+saveOrderWithParam(id: $id, name: $name, valid: $valid) {
+id
+name
+valid
+}
+}
+
+{
+"id": 9999,
+"name": "名称-9999",
+"valid": true
+}
+----

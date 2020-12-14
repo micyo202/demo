@@ -1,0 +1,21 @@
+type TempOrder {
+    # 主键ID
+    id: ID!
+    # 名称
+    name: String!
+    # 有效标记（true/false）
+    valid: Boolean!
+    # 创建时间
+    createTime: String
+    # 更新时间
+    updateTime: String
+}
+
+input TempOrderInput {
+    # 主键ID
+    id: ID
+    # 名称
+    name: String
+    # 有效标记（true/false）
+    valid: Boolean
+}

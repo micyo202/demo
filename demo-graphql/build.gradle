@@ -1,0 +1,17 @@
+group 'com.example.demo.graphql'
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'com.alibaba:druid-spring-boot-starter:1.1.23'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
+
+    implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:7.0.1'
+    //runtimeOnly 'com.graphql-java-kickstart:altair-spring-boot-starter:7.0.1'
+    runtimeOnly 'com.graphql-java-kickstart:graphiql-spring-boot-starter:7.0.1'
+    //runtimeOnly 'com.graphql-java-kickstart:voyager-spring-boot-starter:7.0.1'
+    //testImplementation 'com.graphql-java-kickstart:graphql-spring-boot-starter-test:7.0.1'
+}

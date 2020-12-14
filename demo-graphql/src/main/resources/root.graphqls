@@ -1,0 +1,11 @@
+# 查询入口
+type Query {
+    getAllOrders: [TempOrder]
+    getOrderById(id: ID!): TempOrder
+}
+
+# CRUD 入口
+type Mutation {
+    saveOrderWithInput(input: TempOrderInput) : TempOrder
+    saveOrderWithParam(id: ID, name: String, valid: Boolean) : TempOrder
+}
