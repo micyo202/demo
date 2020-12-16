@@ -1,0 +1,33 @@
+server:
+  port: 8888
+  # 开启优雅下线
+  #shutdown: graceful
+
+#spring:
+  #application:
+    #name: demo-apollo
+  # 设置优雅下线超时时间
+  #lifecycle:
+    #timeout-per-shutdown-phase: 30s
+  #datasource:
+    #druid:
+      #JDBC配置
+      #url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+      #username: test
+      #password: test
+      #driver-class-name: com.mysql.cj.jdbc.Driver
+
+app:
+  # 在配置中心配置的应用身份信息
+  id: demo-apollo
+apollo:
+  # 服务地址
+  meta: http://localhost:8080
+  bootstrap:
+    # 在应用启动阶段是否向 spring 容器注入被托管的 properties 文件配置信息
+    enabled: true
+    # 配置的命名空间，多个逗号分隔，一个 namespace 相当于一个配置文件
+    namespaces: application,datasource
+  eagerLoad:
+    # 将 apollo 配置加载提到初始化日志系统之前
+    enabled: true

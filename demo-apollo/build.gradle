@@ -1,0 +1,15 @@
+group 'com.example.demo.apollo'
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+    runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'com.alibaba:druid-spring-boot-starter:1.1.23'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
+
+    implementation 'com.ctrip.framework.apollo:apollo-client:1.7.0'
+}
