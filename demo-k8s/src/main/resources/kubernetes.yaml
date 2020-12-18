@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-k8s-deploy
+  namespace: default
+  labels:
+    name: demo-k8s-deploy-label
+spec:
+  replicas: 1 #副本数量
+  revisionHistoryLimit: 3 #设置保留的历史版本个数，默认是 10
+  minReadySeconds: 0 #设置 pod 准备就绪的最小秒数（需要估一个比较合理的值，从容器启动到应用正常提供服务）
+  strategy:
+    type: RollingUpdate #滚动更新
+    rollingUpdate:
+      maxSurge: 30% #更新时允许最大激增的容器数，可以是个数，也可以是百分比（默认 replicas 的 1/4 向上取整）
+      maxUnavailable: 30% #更新时允许最大 unavailable 容器数，可以是个数，也可以是百分比（默认 replicas 的 1/4 向上取整）
+  selector:
+    matchLabels:
+      name: demo-k8s-deploy-label
+  template:
+    metadata:
+      labels:
+        name: demo-k8s-deploy-label
+    spec:
+      containers:
+        - name: demo-k8s-container
+          image: demo-k8s:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8088
+          resources:
+            requests: #最小资源配置
+              cpu: 300m #代表0.3CPU
+              memory: 300Mi
+            limits: #最大资源配置
+              cpu: 500m #代表0.5CPU
+              memory: 500Mi
+
+      restartPolicy: Always #Pod的重启策略
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-k8s-service
+  namespace: default
+spec:
+  selector:
+    name: demo-k8s-deploy-label
+  type: NodePort
+  ports:
+    - name: demo-k8s-port
+      protocol: TCP
+      port: 8088
+      targetPort: 8088
+      nodePort: 31088
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: demo-k8s-hpa
+  namespace: default
+spec:
+  scaleTargetRef: #指定需要管理的 Deployment/ReplicaSet 的名字
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo-k8s-deploy
+  minReplicas: 1 #pod可伸缩最小范围
+  maxReplicas: 3 #pod可伸缩最大范围
+  targetCPUUtilizationPercentage: 30 #指定 CPU 使用率，就是自动扩容和缩容的触发条件
