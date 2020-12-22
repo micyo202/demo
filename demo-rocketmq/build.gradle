@@ -1,0 +1,12 @@
+group 'com.example.demo.rocketmq'
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+    implementation 'org.apache.rocketmq:rocketmq-spring-boot-starter:2.1.1'
+    //implementation 'org.apache.rocketmq:rocketmq-client:4.7.1'
+}
