@@ -1,0 +1,18 @@
+group 'com.example.demo.auth'
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+    runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'com.alibaba:druid-spring-boot-starter:1.1.23'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE'
+
+    implementation 'org.apache.httpcomponents:httpclient'
+}
