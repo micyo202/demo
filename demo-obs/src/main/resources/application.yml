@@ -1,0 +1,17 @@
+server:
+  port: 8888
+  # 开启优雅下线
+  shutdown: graceful
+
+spring:
+  application:
+    name: demo-obs
+  # 设置优雅下线超时时间
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+# 对象存储配置
+obs:
+  end-point: https://obs.cn-north-1.myhuaweicloud.com
+  access-key: ak
+  secret-key: sk
