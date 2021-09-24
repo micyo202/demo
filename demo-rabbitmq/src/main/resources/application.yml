@@ -1,0 +1,25 @@
+server:
+  port: 8888
+  # 开启优雅下线
+  shutdown: graceful
+
+spring:
+  application:
+    name: demo-rabbitmq
+  # 设置优雅下线超时时间
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  rabbitmq:
+    addresses: localhost:5672
+    username: guest
+    password: guest
+    # 开发消息发送确认 异步
+    publisher-confirm-type: correlated
+    listener:
+      # 开启手动确认ack
+      simple:
+        acknowledge-mode: manual
+      direct:
+        acknowledge-mode: manual
+    # 开发发送失败退回
+    publisher-returns: on
